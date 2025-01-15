@@ -48,7 +48,7 @@ CLASS zcl_abap_movie_generator IMPLEMENTATION.
     " Create Movie
     movie-movie_uuid      = cl_system_uuid=>create_uuid_x16_static( ).
     movie-title           = 'Die Verurteilten'.
-    movie-genre           = 'DRAMA'.
+    movie-genre           = 'DRM'.
     movie-publishing_year = '1994'.
     movie-runtime_in_min  = 142.
     movie-image_url       = 'https://m.media-amazon.com/images/I/517SDGYY26L._SX300_SY300_QL70_ML2_.jpg'.
@@ -57,7 +57,7 @@ CLASS zcl_abap_movie_generator IMPLEMENTATION.
     " Create Movie
     movie-movie_uuid      = cl_system_uuid=>create_uuid_x16_static( ).
     movie-title           = 'Der Pate'.
-    movie-genre           = 'DRAMA'.
+    movie-genre           = 'DRM'.
     movie-publishing_year = '1972'.
     movie-runtime_in_min  = 175.
     movie-image_url       = 'https://m.media-amazon.com/images/I/61CmuSlouPL._SY445_.jpg'.
@@ -66,7 +66,7 @@ CLASS zcl_abap_movie_generator IMPLEMENTATION.
     " Create Movie
     movie-movie_uuid      = cl_system_uuid=>create_uuid_x16_static( ).
     movie-title           = 'The Dark Knight'.
-    movie-genre           = 'FANTASY'.
+    movie-genre           = 'FNTSY'.
     movie-publishing_year = '2008'.
     movie-runtime_in_min  = 152.
     movie-image_url       = 'https://m.media-amazon.com/images/I/71NiWjOPZ1L._SX342_.jpg'.
@@ -75,7 +75,7 @@ CLASS zcl_abap_movie_generator IMPLEMENTATION.
     " Create Movie
     movie-movie_uuid      = cl_system_uuid=>create_uuid_x16_static( ).
     movie-title           = 'Der Pate 2'.
-    movie-genre           = 'DRAMA'.
+    movie-genre           = 'DRM'.
     movie-publishing_year = '1974'.
     movie-runtime_in_min  = 202.
     movie-image_url       = 'https://m.media-amazon.com/images/I/812R0xUnGAL._SY445_.jpg'.
@@ -84,7 +84,7 @@ CLASS zcl_abap_movie_generator IMPLEMENTATION.
     " Create Movie
     movie-movie_uuid      = cl_system_uuid=>create_uuid_x16_static( ).
     movie-title           = 'Schindlers Liste'.
-    movie-genre           = 'DRAMA'.
+    movie-genre           = 'DRM'.
     movie-publishing_year = '1993'.
     movie-runtime_in_min  = 195.
     movie-image_url       = 'https://m.media-amazon.com/images/I/71gYAeGfLFL._SX342_.jpg'.
@@ -93,7 +93,7 @@ CLASS zcl_abap_movie_generator IMPLEMENTATION.
     " Create Movie
     movie-movie_uuid      = cl_system_uuid=>create_uuid_x16_static( ).
     movie-title           = 'Fight Club'.
-    movie-genre           = 'THRILLER'.
+    movie-genre           = 'THRLLR'.
     movie-publishing_year = '1999'.
     movie-runtime_in_min  = 139.
     movie-image_url       = 'https://m.media-amazon.com/images/I/91z1PACXftL._SX342_.jpg'.
@@ -102,7 +102,7 @@ CLASS zcl_abap_movie_generator IMPLEMENTATION.
     " Create Movie
     movie-movie_uuid      = cl_system_uuid=>create_uuid_x16_static( ).
     movie-title           = 'Pulp Fiction'.
-    movie-genre           = 'DRAMA'.
+    movie-genre           = 'DRM'.
     movie-publishing_year = '1994'.
     movie-runtime_in_min  = 154.
     movie-image_url       = 'https://m.media-amazon.com/images/I/510QW0CTXKL._AC_.jpg'.
@@ -111,7 +111,7 @@ CLASS zcl_abap_movie_generator IMPLEMENTATION.
     " Create Movie
     movie-movie_uuid      = cl_system_uuid=>create_uuid_x16_static( ).
     movie-title           = 'Dune: Part Two'.
-    movie-genre           = 'SCIFI'.
+    movie-genre           = 'SCNCFCTN'.
     movie-publishing_year = '2024'.
     movie-runtime_in_min  = 166.
     movie-image_url       = 'https://m.media-amazon.com/images/I/51odSyNeFgL._SX300_SY300_QL70_ML2_.jpg'.
@@ -119,8 +119,26 @@ CLASS zcl_abap_movie_generator IMPLEMENTATION.
 
     " Create Movie
     movie-movie_uuid      = cl_system_uuid=>create_uuid_x16_static( ).
+    movie-title           = 'Spider-Man: Across the Spider-Verse'.
+    movie-genre           = 'ANMTN'.
+    movie-publishing_year = '2023'.
+    movie-runtime_in_min  = 180.
+    movie-image_url       = 'https://m.media-amazon.com/images/I/51arP7roY6L._SX300_SY300_QL70_ML2_.jpg'.
+    APPEND movie TO movies.
+
+    " Create Movie
+    movie-movie_uuid      = cl_system_uuid=>create_uuid_x16_static( ).
+    movie-title           = 'Avengers: Infinity War'.
+    movie-genre           = 'FNTSY'.
+    movie-publishing_year = '2018'.
+    movie-runtime_in_min  = 149.
+    movie-image_url       = 'https://m.media-amazon.com/images/I/41RAeCuqsyL._SX300_SY300_QL70_ML2_.jpg'.
+    APPEND movie TO movies.
+
+    " Create Movie
+    movie-movie_uuid      = cl_system_uuid=>create_uuid_x16_static( ).
     movie-title           = 'Disaster Movie'.
-    movie-genre           = 'COMEDY'.
+    movie-genre           = 'CMDY'.
     movie-publishing_year = '2008'.
     movie-runtime_in_min  = 87.
     movie-image_url       = 'https://m.media-amazon.com/images/I/51a9czHXSPL._SX300_SY300_QL70_ML2_.jpg'.
@@ -129,7 +147,7 @@ CLASS zcl_abap_movie_generator IMPLEMENTATION.
     " Create Movie
     movie-movie_uuid      = cl_system_uuid=>create_uuid_x16_static( ).
     movie-title           = 'DKAO - Türken im Weltall'.
-    movie-genre           = 'SCIFI'.
+    movie-genre           = 'SCNCFCTN'.
     movie-publishing_year = '2006'.
     movie-runtime_in_min  = 140.
     movie-image_url       = 'https://m.media-amazon.com/images/I/51LzIDpziAL._SX300_SY300_QL70_ML2_.jpg'.
@@ -138,7 +156,7 @@ CLASS zcl_abap_movie_generator IMPLEMENTATION.
     " Create Movie
     movie-movie_uuid      = cl_system_uuid=>create_uuid_x16_static( ).
     movie-title           = 'Steel - Der stählerne Held'.
-    movie-genre           = 'ACTION'.
+    movie-genre           = 'ACTN'.
     movie-publishing_year = '1997'.
     movie-runtime_in_min  = 97.
     movie-image_url       = 'https://m.media-amazon.com/images/I/413z5md0KTL._SX300_SY300_QL70_ML2_.jpg'.
@@ -147,7 +165,7 @@ CLASS zcl_abap_movie_generator IMPLEMENTATION.
     " Create Movie
     movie-movie_uuid      = cl_system_uuid=>create_uuid_x16_static( ).
     movie-title           = 'Hercules in New York'.
-    movie-genre           = 'ACTION'.
+    movie-genre           = 'ACTN'.
     movie-publishing_year = '1970'.
     movie-runtime_in_min  = 92.
     movie-image_url       = 'https://m.media-amazon.com/images/I/61cGw5t5clL._SX300_SY300_QL70_ML2_.jpg'.
@@ -156,7 +174,7 @@ CLASS zcl_abap_movie_generator IMPLEMENTATION.
     " Create Movie
     movie-movie_uuid      = cl_system_uuid=>create_uuid_x16_static( ).
     movie-title           = 'House of the Dead'.
-    movie-genre           = 'HORROR'.
+    movie-genre           = 'HRRR'.
     movie-publishing_year = '2003'.
     movie-runtime_in_min  = 90.
     movie-image_url       = 'https://m.media-amazon.com/images/I/414ja2N+iuL._SY300_.jpg'.

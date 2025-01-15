@@ -1,73 +1,76 @@
 @Metadata.layer: #CUSTOMER
-@UI.headerInfo:
-{
-  typeNamePlural: 'Movies',
-  typeName: 'Movie',
-  title.value: 'Title',
-  description.value: 'PublishingYear',
-  imageUrl: 'ImageUrl'
-}
-@UI.presentationVariant:[{ sortOrder: [{ by: 'AverageRating', direction: #DESC }] }]
-annotate entity ZC_054906_Movie with
-{
 
+@UI.headerInfo: { typeNamePlural: 'Movies',
+                  typeName: 'Movie',
+                  title.value: 'Title',
+                  description.value: 'PublishingYear',
+                  imageUrl: 'ImageUrl' }
+
+@UI.presentationVariant: [ { sortOrder: [ { by: 'AverageRating', direction: #DESC } ] } ]
+
+annotate entity ZC_054906_Movie with
+
+{
   /* Actions */
-  @UI.lineItem: [{ position: 10, type: #FOR_ACTION, label: 'Rate', dataAction: 'RateMovie' }]
-  @UI.identification: [{ position: 10, type: #FOR_ACTION, label: 'Rate', dataAction: 'RateMovie' }]
+  @UI.facet: [ { position: 10, label: 'Movie Details', type: #FIELDGROUP_REFERENCE, targetQualifier: 'Details' },
+               { position: 15, label: 'Ratings', type: #LINEITEM_REFERENCE, targetElement: '_Ratings' },
+               { position: 20, label: 'Administrative Data', type: #FIELDGROUP_REFERENCE, targetQualifier: 'Admin' } ]
+  @UI.fieldGroup: [ { position: 10, qualifier: 'Admin' } ]
+  @UI.identification: [ { position: 10, type: #FOR_ACTION, label: 'Rate', dataAction: 'RateMovie' } ]
+  @UI.lineItem: [ { position: 10, type: #FOR_ACTION, label: 'Rate', dataAction: 'RateMovie' } ]
 
   /* Facets */
-  @UI.facet:
-  [
-    { position: 10, label: 'Movie Details', type: #FIELDGROUP_REFERENCE, targetQualifier: 'Details' },
-    { position: 15, label: 'Ratings', type: #LINEITEM_REFERENCE, targetElement: '_Ratings' },
-    { position: 20, label: 'Administrative Data', type: #FIELDGROUP_REFERENCE, targetQualifier: 'Admin' }
-  ]
 
   /* Fields */
-  @UI.fieldGroup: [{ position: 10, qualifier: 'Admin' }]
   MovieUuid;
 
-  @UI.lineItem: [{ position: 10 }]
-  @UI.fieldGroup: [{ position: 10, qualifier: 'Details' }]
+  @UI.fieldGroup: [ { position: 10, qualifier: 'Details' } ]
+  @UI.lineItem: [ { position: 10 } ]
   Title;
 
-  @UI.lineItem: [{ position: 20 }]
-  @UI.selectionField: [{ position: 10 }]
-  @UI.fieldGroup: [{ position: 20, qualifier: 'Details' }]
+  @UI.fieldGroup: [ { position: 20, qualifier: 'Details' } ]
+  @UI.lineItem: [ { position: 20 } ]
+  @UI.selectionField: [ { position: 10 } ]
   Genre;
 
-  @UI.lineItem: [{ position: 30 }]
-  @UI.selectionField: [{ position: 20 }]
-  @UI.fieldGroup: [{ position: 30, qualifier: 'Details' }]
+  @UI.fieldGroup: [ { position: 30, qualifier: 'Details' } ]
+  @UI.lineItem: [ { position: 30 } ]
+  @UI.selectionField: [ { position: 20 } ]
   PublishingYear;
 
-  @UI.lineItem: [{ position: 40 }]
-  @UI.selectionField: [{ position: 30 }]
-  @UI.fieldGroup: [{ position: 40, qualifier: 'Details' }]
+  @UI.fieldGroup: [ { position: 40, qualifier: 'Details' } ]
+  @UI.lineItem: [ { position: 40 } ]
+  @UI.selectionField: [ { position: 30 } ]
   RuntimeInMin;
 
-  @UI.lineItem: [{ position: 5 }]
-  @UI.fieldGroup: [{ position: 50, qualifier: 'Details' }]
+  @UI.fieldGroup: [ { position: 50, qualifier: 'Details' } ]
+  @UI.lineItem: [ { position: 1 } ]
   ImageUrl;
 
-  @UI.fieldGroup: [{ position: 20, qualifier: 'Admin' }]
+  @UI.fieldGroup: [ { position: 20, qualifier: 'Admin' } ]
   CreatedAt;
 
-  @UI.fieldGroup: [{ position: 30, qualifier: 'Admin' }]
+  @UI.fieldGroup: [ { position: 30, qualifier: 'Admin' } ]
   CreatedBy;
 
-  @UI.fieldGroup: [{ position: 40, qualifier: 'Admin' }]
+  @UI.fieldGroup: [ { position: 40, qualifier: 'Admin' } ]
   LastChangedAt;
 
-  @UI.fieldGroup: [{ position: 50, qualifier: 'Admin' }]
+  @UI.fieldGroup: [ { position: 50, qualifier: 'Admin' } ]
   LastChangedBy;
 
-  @UI.lineItem: [{ position: 15, criticality: 'AverageRatingCriticality', criticalityRepresentation: #WITHOUT_ICON }]
-  @UI.selectionField: [{ position: 40 }]
-  @UI.fieldGroup: [{ position: 60, qualifier: 'Details', criticality: 'AverageRatingCriticality', criticalityRepresentation: #WITHOUT_ICON }]
+  @UI.dataPoint: { targetValue: 10,
+                   visualization: #RATING,
+                   criticality: 'AverageRatingCriticality',
+                   criticalityRepresentation: #WITHOUT_ICON }
+  @UI.fieldGroup: [ { position: 60,
+                      qualifier: 'Details',
+                      criticality: 'AverageRatingCriticality',
+                      criticalityRepresentation: #WITHOUT_ICON } ]
+  @UI.lineItem: [ { position: 999, criticality: 'AverageRatingCriticality', criticalityRepresentation: #WITHOUT_ICON } ]
+  @UI.selectionField: [ { position: 40 } ]
   AverageRating;
 
   @UI.hidden: true
   AverageRatingCriticality;
-
 }
