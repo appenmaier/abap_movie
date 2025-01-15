@@ -1,20 +1,16 @@
 CLASS zcl_abap_movie_generator DEFINITION
-  PUBLIC
-  FINAL
-  CREATE PUBLIC .
+  PUBLIC FINAL
+  CREATE PUBLIC.
 
   PUBLIC SECTION.
-
-    INTERFACES if_oo_adt_classrun .
-  PROTECTED SECTION.
-  PRIVATE SECTION.
+    INTERFACES if_oo_adt_classrun.
 ENDCLASS.
 
 
 CLASS zcl_abap_movie_generator IMPLEMENTATION.
   METHOD if_oo_adt_classrun~main.
-    DATA movie  TYPE zabap_movie_a.
-    DATA movies TYPE TABLE OF zabap_movie_a.
+    DATA movie   TYPE zabap_movie_a.
+    DATA movies  TYPE TABLE OF zabap_movie_a.
 
     " Delete Movies
     DELETE FROM zabap_movie_a.
@@ -38,6 +34,31 @@ CLASS zcl_abap_movie_generator IMPLEMENTATION.
     movie-runtime_in_min  = 142.
     movie-image_url       = 'https://m.media-amazon.com/images/I/517SDGYY26L._SX300_SY300_QL70_ML2_.jpg'.
     APPEND movie TO movies.
+
+    DATA rating  TYPE zabap_rating_a.
+    DATA ratings TYPE TABLE OF zabap_rating_a.
+    rating-client      = sy-mandt.
+    rating-movie_uuid  = movie-movie_uuid.
+    rating-rating      = 9.
+    rating-rating_date = sy-datum - 1.
+    rating-rating_uuid = cl_system_uuid=>create_uuid_x16_static( ).
+    rating-user_name   = 'GENERATOR'.
+    APPEND rating TO ratings.
+    rating-client      = sy-mandt.
+    rating-movie_uuid  = movie-movie_uuid.
+    rating-rating      = 7.
+    rating-rating_date = sy-datum - 2.
+    rating-rating_uuid = cl_system_uuid=>create_uuid_x16_static( ).
+    rating-user_name   = 'GENERATOR'.
+    APPEND rating TO ratings.
+    rating-client      = sy-mandt.
+    rating-movie_uuid  = movie-movie_uuid.
+    rating-rating      = 10.
+    rating-rating_date = sy-datum - 3.
+    rating-rating_uuid = cl_system_uuid=>create_uuid_x16_static( ).
+    rating-user_name   = 'GENERATOR'.
+    APPEND rating TO ratings.
+    INSERT zabap_rating_a FROM TABLE @ratings.
 
     " Create Movie
     movie-movie_uuid      = cl_system_uuid=>create_uuid_x16_static( ).
@@ -109,5 +130,4 @@ CLASS zcl_abap_movie_generator IMPLEMENTATION.
     ENDIF.
     out->write( |Inserted: { sy-dbcnt } movies| ).
   ENDMETHOD.
-
 ENDCLASS.
