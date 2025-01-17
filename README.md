@@ -1,7 +1,5 @@
 # Filmbewertungs-App
 
-
-
 ## ER-Modell
 
 ```mermaid
@@ -15,9 +13,9 @@ erDiagram
       numc(4) PublishingYear
       int1(3) RuntimeInMin
       sstring(255) ImageUrl
-      dec(21_7) CreatedAt
+      dec(21-7) CreatedAt
       char(12) CreatedBy
-      dec(21_7) LastChangedAt
+      dec(21-7) LastChangedAt
       char(12) LastChangedBy
    }
    Rating {
@@ -59,7 +57,7 @@ block-beta
                    Behavior Projection"]
       end
       C_Movie["C_Movie
-               BO Projection View"]
+               BO Projection Root View"]
       space
       C_Rating["C_Rating
                 BO Projection View"]
@@ -70,7 +68,7 @@ block-beta
       I_MOVIE["I_MOVIE
                Behavior Definition"]
       I_Movie["I_Movie
-               BO Base View"]
+               BO Base Root View"]
       space
       I_Rating["I_Rating
                 BO Base View"]
@@ -120,7 +118,7 @@ flowchart
             Parent/Root"]
    I_Rating["I_Rating
              Composition Child"]
-   subgraph "C_Movie"
+   subgraph "I_MOVIE"
       direction TB
       I_Movie --0..*--> I_Rating
       I_Rating --1..1--> I_Movie
