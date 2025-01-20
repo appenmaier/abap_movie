@@ -63,10 +63,6 @@ annotate entity ZC_054906_Movie with
                    visualization: #RATING,
                    criticality: 'AverageRatingCriticality',
                    criticalityRepresentation: #WITHOUT_ICON }
-  @UI.fieldGroup: [ { position: 60,
-                      qualifier: 'Details',
-                      criticality: 'AverageRatingCriticality',
-                      criticalityRepresentation: #WITHOUT_ICON } ]
   @UI.lineItem: [ { position: 999, criticality: 'AverageRatingCriticality', criticalityRepresentation: #WITHOUT_ICON } ]
   @UI.selectionField: [ { position: 40 } ]
   AverageRating;

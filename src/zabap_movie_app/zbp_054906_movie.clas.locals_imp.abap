@@ -93,9 +93,10 @@ CLASS lhc_Movie IMPLEMENTATION.
         INTO @FINAL(exists).
 
       IF exists = abap_false.
-        FINAL(message) = NEW zcm_054906_movie( textid = zcm_054906_movie=>co_invalid_field_value
-                                               value  = CONV #( movie-Genre )
-                                               field  = 'GENRE' ).
+        FINAL(message) = NEW zcm_054906_movie( textid   = zcm_054906_movie=>co_invalid_field_value
+                                               severity = if_abap_behv_message=>severity-error
+                                               value    = CONV #( movie-Genre )
+                                               field    = 'GENRE' ).
         APPEND VALUE #( %tky           = movie-%tky
                         %msg           = message
                         %create        = if_abap_behv=>mk-on
@@ -112,9 +113,10 @@ CLASS lhc_Movie IMPLEMENTATION.
 
       " Bewertung prüfen und ggbfs. Fehlermeldung erstellen
       IF key-%param-rating < 1 OR key-%param-rating > 10.
-        FINAL(message) = NEW zcm_054906_movie( textid = zcm_054906_movie=>co_invalid_field_value
-                                               value  = CONV #( key-%param-rating )
-                                               field  = 'RATING' ).
+        FINAL(message) = NEW zcm_054906_movie( textid   = zcm_054906_movie=>co_invalid_field_value
+                                               severity = if_abap_behv_message=>severity-error
+                                               value    = CONV #( key-%param-rating )
+                                               field    = 'RATING' ).
         APPEND VALUE #( %tky = key-%tky
                         %msg = message ) TO reported-movie.
         APPEND CORRESPONDING #( key ) TO failed-movie.

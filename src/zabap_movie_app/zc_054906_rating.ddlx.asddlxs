@@ -1,6 +1,7 @@
 @Metadata.layer: #CUSTOMER
 
 @UI.headerInfo: { typeNamePlural: 'Ratings', typeName: 'Rating', title.value: 'Rating', description.value: 'UserName' }
+@UI.presentationVariant: [ { sortOrder: [ { by: 'RatingDate', direction: #DESC } ] } ]
 
 annotate entity ZC_054906_Rating with
 

@@ -6,7 +6,7 @@ define behavior for ZC_054906_Movie //alias <alias_name>
   use create;
   use update;
 
-  use association _Ratings { create; }
+  use association _Ratings;
 
   use action rate_movie result entity ZC_054906_Rating as RateMovie ;
 }
