@@ -1,5 +1,7 @@
 # Filmbewertungs-App
 
+Dieses Repo enthält alle notwendigen Entwicklungsobjekte zur Entwicklung einer Filmbewertungs-App à la IMDB. Das Paket `ZABAP_MOVIE_FOUNDATION` enthält dabei alle notwendigen Dictionary-Objekte, eine Generatorklasse für 15 festgelegte Filme und mehrere zufällige Bewertungen (`ZABAP_MOVIE_GENERATOR`) sowie eine Oberklasse für RAP-Nachrichten (`ZCM_ABAP`); das Paket `ZABAP_MOVIE_APP` eine beispielhafte Implementierung der App.
+
 ## ER-Modell
 
 ```mermaid
