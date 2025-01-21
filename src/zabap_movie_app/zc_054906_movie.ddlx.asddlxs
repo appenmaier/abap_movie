@@ -6,6 +6,7 @@
                   description.value: 'PublishingYear',
                   imageUrl: 'ImageUrl' }
 
+@UI.lineItem: [ { criticality: 'AverageRatingCriticality' } ]
 @UI.presentationVariant: [ { sortOrder: [ { by: 'AverageRating', direction: #DESC } ] } ]
 
 annotate entity ZC_054906_Movie with
