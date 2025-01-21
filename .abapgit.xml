@@ -14,6 +14,12 @@
     <item>/.gitlab-ci.yml</item>
     <item>/abaplint.json</item>
     <item>/azure-pipelines.yml</item>
+    <item>*.sush.xml</item>
+    <item>*.sia6.xml</item>
+    <item>*.sco2.xml</item>
+    <item>*.srvb.xml</item>
+    <item>*.srvd.xml</item>
+    <item>*.srvdsrv</item>
    </IGNORE>
   </DATA>
  </asx:values>
