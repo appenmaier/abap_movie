@@ -67,8 +67,12 @@ block-beta
                 Metadata Extension"]
    end
    block
-      I_MOVIE["I_MOVIE
-               Behavior Definition"]
+      block columns 1
+         I_MOVIE["I_MOVIE
+                  Behavior Definition"]
+         BP_MOVIE["BP_MOVIE
+                   Behavior Implementation"]
+      end
       I_Movie["I_Movie
                BO Base Root View"]
       space
@@ -105,6 +109,7 @@ block-beta
    C_Rating-->C_Movie
    I_Movie-->R_Movie
    I_MOVIE-->I_Movie
+   BP_MOVIE-->I_MOVIE
    I_Movie-->I_Rating
    I_Rating-->I_Movie
    I_Rating-->R_Rating
