@@ -20,6 +20,19 @@
     <OUTPUTLEN>000032</OUTPUTLEN>
     <ABAP_LANGUAGE_VERSION>5</ABAP_LANGUAGE_VERSION>
    </DD04V>
+   <I18N_LANGS>
+    <LANGU>D</LANGU>
+   </I18N_LANGS>
+   <DD04_TEXTS>
+    <item>
+     <DDLANGUAGE>D</DDLANGUAGE>
+     <DDTEXT>UUID Film</DDTEXT>
+     <REPTEXT>UUID Film</REPTEXT>
+     <SCRTEXT_S>UUID Film</SCRTEXT_S>
+     <SCRTEXT_M>UUID Film</SCRTEXT_M>
+     <SCRTEXT_L>UUID Film</SCRTEXT_L>
+    </item>
+   </DD04_TEXTS>
   </asx:values>
  </asx:abap>
 </abapGit>

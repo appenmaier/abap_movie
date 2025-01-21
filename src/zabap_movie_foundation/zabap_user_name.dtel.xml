@@ -20,6 +20,19 @@
     <OUTPUTLEN>000050</OUTPUTLEN>
     <ABAP_LANGUAGE_VERSION>5</ABAP_LANGUAGE_VERSION>
    </DD04V>
+   <I18N_LANGS>
+    <LANGU>D</LANGU>
+   </I18N_LANGS>
+   <DD04_TEXTS>
+    <item>
+     <DDLANGUAGE>D</DDLANGUAGE>
+     <DDTEXT>Nutzername</DDTEXT>
+     <REPTEXT>Nutzername</REPTEXT>
+     <SCRTEXT_S>Nutzername</SCRTEXT_S>
+     <SCRTEXT_M>Nutzername</SCRTEXT_M>
+     <SCRTEXT_L>Nutzername</SCRTEXT_L>
+    </item>
+   </DD04_TEXTS>
   </asx:values>
  </asx:abap>
 </abapGit>
