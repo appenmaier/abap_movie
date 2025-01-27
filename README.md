@@ -1,6 +1,11 @@
 # Filmbewertungs-App
 
-Dieses Repo enthält alle notwendigen Entwicklungsobjekte zur Entwicklung einer Filmbewertungs-App à la IMDB. Das Paket `ZABAP_MOVIE_FOUNDATION` enthält dabei alle notwendigen Dictionary-Objekte, eine Generatorklasse für 15 festgelegte Filme und mehrere zufällige Bewertungen (`ZABAP_MOVIE_GENERATOR`) sowie eine Oberklasse für RAP-Nachrichten (`ZCM_ABAP`); das Paket `ZABAP_MOVIE_APP` eine beispielhafte Implementierung der App.
+Dieses Repo beinhaltet alle notwendigen Entwicklungsobjekte sowie eine Musterlösung zur Entwicklung einer Filmbewertungs-App à la IMDB (siehe auch [Anwendungsentwicklung in SAP S/4HANA - Übungsaufgaben RAP](https://appenmaier.github.io/s4hana/exercises/rap/)). Das Arbeiten mit abapGit-Repos wird [hier](https://appenmaier.github.io/s4hana/additional-material/instructions/use-git-ondemand) beschrieben.
+
+## Aufbau
+
+- Im Wurzelpaket befinden sich alle Dictionary-Objekte, die für die Entwicklung der Filmbewertungs-App erforderlich sind, eine Generatorklasse für 15 festgelegte Filme und mehrere zufällige Bewertungen (`ZABAP_MOVIE_GENERATOR`) sowie eine Oberklasse für RAP-Nachrichten (`ZCM_ABAP`)
+- Im Paket `ZABAP_MOVIE_APP` befindet sich eine beispielhafte Implementierung der App
 
 ## ER-Modell
 
@@ -38,49 +43,51 @@ block-beta
    block
       space
       space
+      space
       UI_MOVIE_V2["UI_MOVIE_V2
                    Service Binding"]
       space
       space
+      space
    end
    block
+      C_MOVIE["C_MOVIE
+               Behavior Projection"]
       space
       space
       UI_MOVIE["UI_MOVIE
                 Service Definition"]
       space
       space
+      space
    end
-   block
-      block columns 1
-         C_MOVIE["C_MOVIE
-                  Metadata Extension"]
-         C_MOVIE2["C_MOVIE
-                   Behavior Projection"]
-      end
+   block     
+      C_MOVIE2["C_MOVIE
+                Metadata Extension"]
+      space
       C_Movie["C_Movie
                BO Projection Root View"]
       space
       C_Rating["C_Rating
                 BO Projection View"]
+      space
       C_RATING["C_RATING
                 Metadata Extension"]
    end
    block
-      block columns 1
-         I_MOVIE["I_MOVIE
-                  Behavior Definition"]
-         BP_MOVIE["BP_MOVIE
-                   Behavior Implementation"]
-      end
+      I_MOVIE["I_MOVIE
+               Behavior Definition"]
+      space
       I_Movie["I_Movie
                BO Base Root View"]
       space
       I_Rating["I_Rating
                 BO Base View"]
       space
+      space
    end
    block
+      space
       space
       R_Movie["R_Movie
                Restricted View"]
@@ -88,12 +95,16 @@ block-beta
       R_Rating["R_Rating
                 Restricted View"]
       space
+      space
    end
    block
+      BP_MOVIE["BP_MOVIE
+                Behavior Implementation"]
       space
       MOVIE_A[("MOVIE_A")]
       space
       RATING_A[("RATING_A")]
+      space
       space
    end
 
@@ -109,7 +120,7 @@ block-beta
    C_Rating-->C_Movie
    I_Movie-->R_Movie
    I_MOVIE-->I_Movie
-   BP_MOVIE-->I_MOVIE
+   I_MOVIE-->BP_MOVIE
    I_Movie-->I_Rating
    I_Rating-->I_Movie
    I_Rating-->R_Rating
