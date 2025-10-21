@@ -113,11 +113,11 @@ CLASS lhc_Movie IMPLEMENTATION.
     " Create Ratings
     MODIFY ENTITY IN LOCAL MODE ZI_054906_MovieTP
            CREATE BY \_Ratings
+           AUTO FILL CID
            FIELDS ( Rating )
            WITH VALUE #( FOR k IN valid_keys
                          ( %tky    = k-%tky
-                           %target = VALUE #( ( %cid   = 'X'
-                                                Rating = k-%param-rating ) ) ) ).
+                           %target = VALUE #( ( Rating = k-%param-rating ) ) ) ).
 
     " Read Movies
     READ ENTITY IN LOCAL MODE ZI_054906_MovieTP
