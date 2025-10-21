@@ -4,7 +4,7 @@ Dieses Repo beinhaltet alle notwendigen Entwicklungsobjekte sowie eine Musterlö
 
 ## Aufbau
 
-- Im Wurzelpaket befinden sich alle Dictionary-Objekte, die für die Entwicklung der Filmbewertungs-App erforderlich sind, eine Generatorklasse für 15 festgelegte Filme und mehrere zufällige Bewertungen (`ZABAP_MOVIE_GENERATOR`) sowie eine Oberklasse für RAP-Nachrichten (`ZCM_ABAP`)
+- Im Paket `ZABAP_MOVIE_FND` befinden sich alle Dictionary-Objekte, die für die Entwicklung der Filmbewertungs-App erforderlich sind, eine Generatorklasse für 15 festgelegte Filme und mehrere zufällige Bewertungen (`ZABAP_MOVIE_GENERATOR`), eine Nachrichtenklasse für Filme (`ZABAP_MOVIE`) sowie eine RAP-Nachrichtenklasse für Filme (`ZCM_ABAP_MOVIE`) und eine abstrakte Oberklasse für RAP-Nachrichten (`ZCM_ABAP`)
 - Im Paket `ZABAP_MOVIE_APP` befindet sich eine beispielhafte Implementierung der App
 
 ## ER-Modell
@@ -44,46 +44,42 @@ block-beta
       space
       space
       space
-      UI_MOVIE_V2["UI_MOVIE_V2
+      UI_MOVIE_O2["UI_MOVIE_O2
                    Service Binding"]
-      space
       space
       space
    end
    block
-      C_MOVIE["C_MOVIE
-               Behavior Projection"]
       space
+      C_MOVIETP2["C_MOVIETP
+                  Metadata Extension"]
       space
       UI_MOVIE["UI_MOVIE
                 Service Definition"]
       space
-      space
-      space
+      C_RATINGTP["C_RATINGTP
+                  Metadata Extension"]
    end
    block     
-      C_MOVIE2["C_MOVIE
-                Metadata Extension"]
+      C_MOVIETP["C_MOVIETP
+                 Behavior Projection"]
       space
-      C_Movie["C_Movie
-               BO Projection Root View"]
+      C_MovieTP["C_MovieTP
+                 BO Projection View"]
       space
-      C_Rating["C_Rating
-                BO Projection View"]
+      C_RatingTP["C_RatingTP
+                  BO Projection View"]
       space
-      C_RATING["C_RATING
-                Metadata Extension"]
    end
    block
-      I_MOVIE["I_MOVIE
-               Behavior Definition"]
+      I_MOVIETP["I_MOVIETP
+                 Behavior Definition"]
       space
-      I_Movie["I_Movie
-               BO Base Root View"]
+      I_MovieTP["I_MovieTP
+                 BO Base View"]
       space
-      I_Rating["I_Rating
-                BO Base View"]
-      space
+      I_RatingTP["I_RatingTP
+                  BO Base View"]
       space
    end
    block
@@ -95,50 +91,68 @@ block-beta
       R_Rating["R_Rating
                 Restricted View"]
       space
+   end
+   block
+      space
+      space      
+      MOVIE["MOVIE
+             Database Table"]
+      space
+      RATING["RATING
+              Database Table"]
       space
    end
    block
       BP_MOVIE["BP_MOVIE
                 Behavior Implementation"]
       space
-      MOVIE_A[("MOVIE_A")]
       space
-      RATING_A[("RATING_A")]
+      space
+      space
+      space
+   end
+   block
+      CM_MOVIE["CM_MOVIE
+                RAP Message Class"]
+      space
+      space
+      space
       space
       space
    end
 
-   UI_MOVIE_V2-->UI_MOVIE
-   UI_MOVIE-->C_Movie
-   UI_MOVIE-->C_Rating
-   C_Movie-->I_Movie
-   C_MOVIE-->C_Movie
-   C_MOVIE2-->C_Movie
-   C_RATING-->C_Rating
-   C_Rating-->I_Rating
-   C_Movie-->C_Rating
-   C_Rating-->C_Movie
-   I_Movie-->R_Movie
-   I_MOVIE-->I_Movie
-   I_MOVIE-->BP_MOVIE
-   I_Movie-->I_Rating
-   I_Rating-->I_Movie
-   I_Rating-->R_Rating
-   R_Movie-->MOVIE_A
-   R_Rating-->RATING_A
+   UI_MOVIE_O2-->UI_MOVIE
+   UI_MOVIE-->C_MovieTP
+   UI_MOVIE-->C_RatingTP
+   C_MovieTP-->I_MovieTP
+   C_MOVIETP-->C_MovieTP
+   C_MOVIETP2-->C_MovieTP
+   C_RATINGTP-->C_RatingTP
+   C_RatingTP-->I_RatingTP
+   C_MovieTP-->C_RatingTP
+   C_RatingTP-->C_MovieTP
+   I_MovieTP-->R_Movie
+   I_MOVIETP-->I_MovieTP
+   I_MOVIETP-->BP_MOVIE
+   BP_MOVIE-->CM_MOVIE
+   I_MovieTP-->I_RatingTP
+   I_RatingTP-->I_MovieTP
+   I_RatingTP-->R_Rating
+   R_Movie-->MOVIE
+   R_Rating-->RATING
 ```
 
 ## Business Object
 
 ```mermaid
 flowchart
-   I_Movie["I_Movie
-            Parent/Root"]
-   I_Rating["I_Rating
-             Composition Child"]
-   subgraph "I_MOVIE"
+   I_MovieTP["I_MovieTP
+              Parent/Root"]
+   I_RatingTP["I_RatingTP
+               Composition Child"]
+   subgraph "I_MOVIETP"
       direction TB
-      I_Movie --0..*--> I_Rating
-      I_Rating --1..1--> I_Movie
+      I_MovieTP --0..*--> I_RatingTP
+      I_RatingTP --1..1--> I_MovieTP
    end
 ```
