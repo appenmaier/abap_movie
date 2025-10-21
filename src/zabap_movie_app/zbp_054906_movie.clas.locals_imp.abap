@@ -11,20 +11,22 @@ ENDCLASS.
 
 CLASS lhc_rating IMPLEMENTATION.
   METHOD determine_rating_date.
-    FINAL(now) = cl_abap_context_info=>get_system_date( ).
+    " Determine Rating Date
+    DATA(current_date) = cl_abap_context_info=>get_system_date( ).
 
-    " Determine Rating Date and Update Rating
+    " Update Rating
     MODIFY ENTITY IN LOCAL MODE ZI_054906_RatingTP
            UPDATE
            FIELDS ( RatingDate )
            WITH VALUE #( FOR key IN keys
-                         ( %tky = key-%tky RatingDate = now ) ).
+                         ( %tky = key-%tky RatingDate = current_date ) ).
   ENDMETHOD.
 
   METHOD determine_user_name.
-    FINAL(current_user) = sy-uname.
-
     " Determine User Name and Update Rating
+    DATA(current_user) = sy-uname.
+
+    " Update Rating
     MODIFY ENTITY IN LOCAL MODE ZI_054906_RatingTP
            UPDATE
            FIELDS ( UserName )
@@ -59,21 +61,22 @@ CLASS lhc_Movie IMPLEMENTATION.
     READ ENTITY IN LOCAL MODE ZI_054906_MovieTP
          FIELDS ( Genre )
          WITH CORRESPONDING #( keys )
-         RESULT FINAL(movies).
+         RESULT DATA(movies).
 
     " Process Movies
-    LOOP AT movies INTO FINAL(movie).
-      " Validate Genre and Create Error Message
+    LOOP AT movies INTO DATA(movie).
+      " Validate Genre
       SELECT SINGLE
         FROM ddcds_customer_domain_value( p_domain_name = 'ZABAP_GENRE' )
         FIELDS @abap_true
         WHERE value_low = @movie-Genre
-        INTO @FINAL(exists).
+        INTO @DATA(exists).
 
       IF exists = abap_false.
-        FINAL(message) = NEW zcm_abap_movie( textid   = zcm_abap_movie=>no_genre_found
-                                             severity = if_abap_behv_message=>severity-error
-                                             genre    = movie-Genre ).
+        " Create Error Message
+        DATA(message) = NEW zcm_abap_movie( textid   = zcm_abap_movie=>no_genre_found
+                                            severity = if_abap_behv_message=>severity-error
+                                            genre    = movie-Genre ).
         APPEND VALUE #( %tky           = movie-%tky
                         %msg           = message
                         %create        = if_abap_behv=>mk-on
@@ -87,9 +90,10 @@ CLASS lhc_Movie IMPLEMENTATION.
     DATA(valid_keys) = keys.
 
     " Process Movie-Keys
-    LOOP AT keys INTO FINAL(key).
-      " Validate Rating and Create Error Message
+    LOOP AT keys INTO DATA(key).
+      " Validate Rating
       IF key-%param-rating < 1 OR key-%param-rating > 10.
+        " Create Error Message
         DATA(message) = NEW zcm_abap_movie( textid   = zcm_abap_movie=>invalid_rating
                                             severity = if_abap_behv_message=>severity-error
                                             rating   = key-%param-rating ).
@@ -119,13 +123,14 @@ CLASS lhc_Movie IMPLEMENTATION.
     READ ENTITY IN LOCAL MODE ZI_054906_MovieTP
          FIELDS ( Title )
          WITH CORRESPONDING #( valid_keys )
-         RESULT FINAL(movies).
+         RESULT DATA(movies).
 
     " Process Movies
-    LOOP AT movies INTO FINAL(movie).
-      " Determine Rating and Create Success Message
-      FINAL(rating) = valid_keys[ %tky = movie-%tky ]-%param-rating.
+    LOOP AT movies INTO DATA(movie).
+      " Determine Rating
+      DATA(rating) = valid_keys[ %tky = movie-%tky ]-%param-rating.
 
+      " Create Success Message
       message = NEW zcm_abap_movie( textid   = zcm_abap_movie=>movie_rated_successfully
                                     severity = if_abap_behv_message=>severity-success
                                     rating   = rating
@@ -142,11 +147,11 @@ CLASS lhc_Movie IMPLEMENTATION.
     READ ENTITY IN LOCAL MODE ZI_054906_MovieTP
          FIELDS ( PublishingYear )
          WITH CORRESPONDING #( keys )
-         RESULT FINAL(movies).
+         RESULT DATA(movies).
 
     " Determine Current Year
-    FINAL(current_year) = substring( val = cl_abap_context_info=>get_system_date( )
-                                     len = 4 ).
+    DATA(current_year) = substring( val = cl_abap_context_info=>get_system_date( )
+                                    len = 4 ).
 
     " Set Feature Control for Action Rate Movie
     result = VALUE #( FOR movie IN movies
