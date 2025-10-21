@@ -1,7 +1,6 @@
 managed implementation in class zbp_054906_movie unique;
 strict ( 2 );
 
-/* Root Entity Movie */
 define behavior for ZI_054906_MovieTP alias Movie
 persistent table zabap_movie_a
 lock master
@@ -18,7 +17,7 @@ authorization master ( instance )
   field ( readonly : update ) Title, Genre, PublishingYear, RuntimeInMin;
   field ( readonly ) CreatedAt, CreatedBy, LastChangedAt, LastChangedBy;
 
-  validation validate_genre on save { create; }
+  validation validate_genre on save { field Genre; }
 
   action ( features : instance ) rate_movie parameter ZA_054906_Rating;
 
@@ -35,7 +34,6 @@ authorization master ( instance )
     }
 }
 
-/* Child Entity Rating */
 define behavior for ZI_054906_RatingTP alias Rating
 persistent table zabap_rating_a
 lock dependent by _Movie
@@ -47,10 +45,7 @@ authorization dependent by _Movie
   association _Movie;
 
   field ( readonly, numbering : managed ) RatingUuid;
-  field ( readonly ) MovieUuid, UserName, RatingDate;
-  field ( mandatory ) Rating;
-
-  validation validate_rating on save { create; }
+  field ( readonly ) MovieUuid, Rating, RatingDate, UserName;
 
   determination determine_user_name on modify { create; }
   determination determine_rating_date on modify { create; }

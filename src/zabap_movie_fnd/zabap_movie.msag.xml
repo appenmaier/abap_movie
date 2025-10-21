@@ -12,13 +12,19 @@
      <SPRSL>E</SPRSL>
      <ARBGB>ZABAP_MOVIE</ARBGB>
      <MSGNR>000</MSGNR>
-     <TEXT>No Genre found for Value &amp;1</TEXT>
+     <TEXT>Invalid Value. No entry found for &amp;1</TEXT>
     </T100>
     <T100>
      <SPRSL>E</SPRSL>
      <ARBGB>ZABAP_MOVIE</ARBGB>
      <MSGNR>001</MSGNR>
      <TEXT>Invalid Rating. Rating must be between 1 and 10, but was &amp;1</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZABAP_MOVIE</ARBGB>
+     <MSGNR>002</MSGNR>
+     <TEXT>Movie &amp;1 was rated successfully with &amp;2</TEXT>
     </T100>
    </T100>
   </asx:values>
