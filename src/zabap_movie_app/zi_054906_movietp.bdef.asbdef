@@ -8,7 +8,7 @@ lock master
 authorization master ( instance )
 //etag master <field_name>
 {
-  create;
+  create ( authorization : global );
   update;
   delete;
   association _Ratings { create; }
@@ -20,7 +20,7 @@ authorization master ( instance )
 
   validation validate_genre on save { create; }
 
-  action rate_movie parameter ZA_054906_Rating;
+  action ( features : instance ) rate_movie parameter ZA_054906_Rating;
 
   mapping for zabap_movie_a corresponding
     {

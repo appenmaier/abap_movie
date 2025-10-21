@@ -62,6 +62,10 @@ CLASS lhc_Movie DEFINITION INHERITING FROM cl_abap_behavior_handler.
       IMPORTING keys FOR movie~validate_genre.
     METHODS rate_movie FOR MODIFY
       IMPORTING keys FOR ACTION movie~rate_movie.
+    METHODS get_instance_features FOR INSTANCE FEATURES
+      IMPORTING keys REQUEST requested_features FOR movie RESULT result.
+    METHODS get_global_authorizations FOR GLOBAL AUTHORIZATION
+      IMPORTING REQUEST requested_authorizations FOR movie RESULT result.
 
 ENDCLASS.
 
@@ -105,5 +109,24 @@ CLASS lhc_Movie IMPLEMENTATION.
                          ( %tky    = k-%tky
                            %target = VALUE #( ( %cid   = 'X'
                                                 Rating = k-%param-rating ) ) ) ).
+  ENDMETHOD.
+
+  METHOD get_instance_features.
+    READ ENTITY IN LOCAL MODE ZI_054906_MovieTP
+         FIELDS ( PublishingYear )
+         WITH CORRESPONDING #( keys )
+         RESULT FINAL(movies).
+
+    FINAL(current_year) = substring( val = cl_abap_context_info=>get_system_date( )
+                                     len = 4 ).
+
+    result = VALUE #( FOR movie IN movies
+                      ( %tky               = movie-%tky
+                        %action-rate_movie = COND #( WHEN movie-PublishingYear > current_year
+                                                     THEN if_abap_behv=>fc-o-disabled
+                                                     ELSE if_abap_behv=>fc-o-enabled ) ) ).
+  ENDMETHOD.
+
+  METHOD get_global_authorizations.
   ENDMETHOD.
 ENDCLASS.
