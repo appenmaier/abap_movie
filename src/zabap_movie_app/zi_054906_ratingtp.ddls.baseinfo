@@ -3,10 +3,12 @@
 {
 "FROM":
 [
-"ZI_054906_GENRE"
+"ZR_054906_RATING"
 ],
 "ASSOCIATED":
-[],
+[
+"ZI_054906_MOVIETP"
+],
 "BASE":
 [],
 "ANNO_REF":
