@@ -72,24 +72,24 @@ block-beta
       space
    end
    block
-      I_MOVIETP["I_MOVIETP
+      R_MOVIETP["R_MOVIETP
                  Behavior Definition"]
       space
-      I_MovieTP["I_MovieTP
+      R_MovieTP["R_MovieTP
                  BO Base View"]
       space
-      I_RatingTP["I_RatingTP
+      R_RatingTP["R_RatingTP
                   BO Base View"]
       space
    end
    block
       space
       space
-      R_Movie["R_Movie
-               Restricted View"]
+      I_Movie["I_Movie
+               Base View"]
       space
-      R_Rating["R_Rating
-                Restricted View"]
+      I_Rating["I_Rating
+                Base View"]
       space
    end
    block
@@ -124,35 +124,35 @@ block-beta
    UI_MOVIE_O2-->UI_MOVIE
    UI_MOVIE-->C_MovieTP
    UI_MOVIE-->C_RatingTP
-   C_MovieTP-->I_MovieTP
+   C_MovieTP-->R_MovieTP
    C_MOVIETP-->C_MovieTP
    C_MOVIETP2-->C_MovieTP
    C_RATINGTP-->C_RatingTP
-   C_RatingTP-->I_RatingTP
+   C_RatingTP-->R_RatingTP
    C_MovieTP-->C_RatingTP
    C_RatingTP-->C_MovieTP
-   I_MovieTP-->R_Movie
-   I_MOVIETP-->I_MovieTP
-   I_MOVIETP-->BP_MOVIE
+   R_MovieTP-->I_Movie
+   R_MOVIETP-->R_MovieTP
+   R_MOVIETP-->BP_MOVIE
    BP_MOVIE-->CM_MOVIE
-   I_MovieTP-->I_RatingTP
-   I_RatingTP-->I_MovieTP
-   I_RatingTP-->R_Rating
-   R_Movie-->MOVIE
-   R_Rating-->RATING
+   R_MovieTP-->R_RatingTP
+   R_RatingTP-->R_MovieTP
+   R_RatingTP-->I_Rating
+   I_Movie-->MOVIE
+   I_Rating-->RATING
 ```
 
 ## Business Object
 
 ```mermaid
 flowchart
-   I_MovieTP["I_MovieTP
+   R_MovieTP["R_MovieTP
               Parent/Root"]
-   I_RatingTP["I_RatingTP
+   R_RatingTP["R_RatingTP
                Composition Child"]
-   subgraph "I_MOVIETP"
+   subgraph "R_MOVIETP"
       direction TB
-      I_MovieTP --0..*--> I_RatingTP
-      I_RatingTP --1..1--> I_MovieTP
+      R_MovieTP --0..*--> R_RatingTP
+      R_RatingTP --1..1--> R_MovieTP
    end
 ```
