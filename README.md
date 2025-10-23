@@ -4,7 +4,7 @@ Dieses Repo beinhaltet alle notwendigen Entwicklungsobjekte sowie eine Musterlö
 
 ## Aufbau
 
-- Im Paket `ZABAP_MOVIE_FND` befinden sich alle Dictionary-Objekte, die für die Entwicklung der Filmbewertungs-App erforderlich sind, eine Generatorklasse für 15 festgelegte Filme und mehrere zufällige Bewertungen (`ZABAP_MOVIE_GENERATOR`), eine Nachrichtenklasse für Filme (`ZABAP_MOVIE`) sowie eine RAP-Nachrichtenklasse für Filme (`ZCM_ABAP_MOVIE`) und eine abstrakte Oberklasse für RAP-Nachrichten (`ZCM_ABAP`)
+- Im Paket `ZABAP_MOVIE_BASICS` befinden sich alle Dictionary-Objekte, die für die Entwicklung der Filmbewertungs-App erforderlich sind, eine Generatorklasse für 15 festgelegte Filme und mehrere zufällige Bewertungen (`ZABAP_MOVIE_GENERATOR`), eine Nachrichtenklasse für Filme (`ZABAP_MOVIE`) sowie eine RAP-Nachrichtenklasse für Filme (`ZCM_ABAP_MOVIE`) und eine abstrakte Oberklasse für RAP-Nachrichten (`ZCM_ABAP`)
 - Im Paket `ZABAP_MOVIE_APP` befindet sich eine beispielhafte Implementierung der App
 
 ## ER-Modell
