@@ -86,10 +86,10 @@ block-beta
       space
       space
       I_Movie["I_Movie
-               Base View"]
+               Basic Interface View"]
       space
       I_Rating["I_Rating
-                Base View"]
+                Basic Interface View"]
       space
    end
    block
