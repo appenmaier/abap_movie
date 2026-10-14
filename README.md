@@ -146,6 +146,10 @@ block-beta
 
 ```mermaid
 flowchart
+   C_MovieTP["C_MovieTP
+              Parent/Root"]
+   C_RatingTP["C_RatingTP
+               Composition Child"]
    R_MovieTP["R_MovieTP
               Parent/Root"]
    R_RatingTP["R_RatingTP
@@ -154,5 +158,10 @@ flowchart
       direction TB
       R_MovieTP --0..*--> R_RatingTP
       R_RatingTP --1..1--> R_MovieTP
+   end
+   subgraph "C_MOVIETP"
+      direction TB
+      C_MovieTP --0..*--> C_RatingTP
+      C_RatingTP --1..1--> C_MovieTP
    end
 ```
